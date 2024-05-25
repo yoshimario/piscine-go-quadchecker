@@ -23,9 +23,19 @@ func main() {
 func atoi(s string) int {
 	num := 0
 	sLen := len(s)
+	isMinus := false
+
+	if s[0] == '-' {
+		isMinus = true
+		s = s[1:]
+	}
 
 	for i := 0; i < sLen; i++ {
 		num = num*10 + int(s[i]-48)
+	}
+
+	if isMinus {
+		num = -num
 	}
 	return num
 }
