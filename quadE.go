@@ -16,7 +16,7 @@ func main() {
 
 	col := atoi(args[0])
 	row := atoi(args[1])
-	QuadE(row, col)
+	QuadE(col, row)
 	os.Exit(0)
 }
 
