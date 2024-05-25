@@ -22,7 +22,6 @@ func main() {
 
 func atoi(s string) int {
 	num := 0
-	sLen := len(s)
 	isMinus := false
 
 	if s[0] == '-' {
@@ -30,6 +29,7 @@ func atoi(s string) int {
 		s = s[1:]
 	}
 
+	sLen := len(s)
 	for i := 0; i < sLen; i++ {
 		num = num*10 + int(s[i]-48)
 	}
