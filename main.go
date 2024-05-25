@@ -29,6 +29,10 @@ func main() {
 	inputS := string(inputB)
 	inputSLen := len(inputB)
 
+	if inputS == "" {
+		os.Exit(0)
+	}
+
 	//count the columns and the rows
 	col := 0
 	row := 0
