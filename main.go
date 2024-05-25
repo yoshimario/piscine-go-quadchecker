@@ -8,8 +8,11 @@ import (
 )
 
 func main() {
+	// creates buffer to store input and temp byte of slice to read the chunks of input
 	var buffer bytes.Buffer
 	tempBuf := make([]byte, 1024)
+
+	//loops and write the input by chunks into the buffer until there is no more input
 	for {
 		count, err := os.Stdin.Read(tempBuf)
 		if err != nil {
@@ -19,19 +22,14 @@ func main() {
 			os.Exit(1)
 		}
 		buffer.Write(tempBuf[:count])
-
 	}
 
+	//convert the buffer to string and then check the length of it.
 	inputB := buffer.Bytes()
+	inputS := string(inputB)
+	inputSLen := len(inputB)
 
-	/* inputStat, _ := os.Stdin.Stat()          // grab info of output of previous command
-	inputB := make([]byte, inputStat.Size()) // create array of correct size for output of previous command
-	os.Stdin.Read(inputB)                    // grab output into array inputB */
-
-	inputS := string(inputB) // convert input byte to input string
-	inputSLen := len(inputB) // get length of input
-
-	// check the number of rows and col
+	//count the columns and the rows
 	col := 0
 	row := 0
 	for i := 0; i < inputSLen; i++ {
@@ -48,9 +46,10 @@ func main() {
 		}
 	}
 
-	// generate quadABCDE and compare with input to see if it matches any
-	result := "" // empty string to store result
-	numRes := 0  // count number of results
+	// checks the predefined pattern if the input pattern matches, i.e. QuadA have o's dashes and poles. The code repeats for the rest aswell from QuadB -  QuadE, last part is just if its not a quad function, it will print that.
+	// ** If numRes == 0 and result = result + in quad D and E is because D-E share the same characters as C as thats the first one we check it doesn't need it.
+	result := ""
+	numRes := 0
 	if inputS == prntBox(col, row, 'o', 'o', 'o', 'o', '-', '|') {
 		result = "[quadA] [" + itoa(col) + "] [" + itoa(row) + "]"
 		numRes++
@@ -79,7 +78,6 @@ func main() {
 		}
 		numRes++
 	}
-
 	if numRes == 0 {
 		fmt.Println("Not a quad function")
 	} else {
@@ -88,6 +86,7 @@ func main() {
 	os.Exit(0)
 }
 
+// Turns int to string
 func itoa(num int) string {
 	s := ""
 
@@ -102,6 +101,7 @@ func itoa(num int) string {
 	return s
 }
 
+// generate a string reprensentation of a box with the given dimensions and characters.
 func prntBox(x, y int, c1, c2, c3, c4, top, side rune) string {
 	s := ""
 
@@ -118,6 +118,7 @@ func prntBox(x, y int, c1, c2, c3, c4, top, side rune) string {
 	return s
 }
 
+// generate a single line of the box.
 func prntLine(x int, c1 rune, c2 rune, mid rune) string {
 	s := ""
 	for i := 0; i < x; i++ {
