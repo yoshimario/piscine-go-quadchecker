@@ -33,8 +33,8 @@ CBBBA
 ```
 
 Each quad function should take 2 int arguments: one for the row and one for the column of the quad generated.
-The command to run the quad generatoirs are ./[program name] [row] [col]
-Example: ./quadA 5 3, which will print out the examples above.<br>
+The command to run the quad generatoirs are ``` bash./[program name] [row] [col] ```
+Example: ``` bash ./quadA 5 3, ``` which will print out the examples above.<br>
 
 
 The quadchecker(main.go) is intended to be run with the quad generator and a | command. This will feed the output of the quad generator into the quadchecker and tells the user which are the possible quads. Echo command can be used to feed incorrect output int the quadchecker.<br>
