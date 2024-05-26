@@ -29,8 +29,8 @@ ABBBC
 ABBBC
 B   B
 CBBBA
-</code>
-``` bash
+
+```
 
 Each quad function should take 2 int arguments: one for the row and one for the column of the quad generated.
 The command to run the quad generatoirs are ./[program name] [row] [col]
@@ -53,7 +53,7 @@ B  |
 C--C
 $ echo -n "ABBo\n|  B\nB  |\nC--C\n" | ./quadchecker
 Not a quad function
-``` bash
+```
 
 Made by:
 Allen Lee 'ylee' Yuan Neng<br>
