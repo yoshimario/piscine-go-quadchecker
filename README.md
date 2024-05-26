@@ -1,58 +1,56 @@
-Instructions
-This raid is based on the quad functions.
+** QUADCHECKER **
+== Grit:Lab May Picsine Go 2024==
 
-Create a program quadchecker that takes a string as an argument and displays the name of the matching quad and its dimensions.
+The purpose of this program is to check if an input matches any of the quad outputs (from the first raid).
+There are 5 quad programs:
 
-If the argument is not a quad the program should print Not a quad function.
+A)
+o---o
+|   |
+o---o
 
-All answers must end with a newline ('\n').
+B)
+/***\
+*   *
+\***/
 
-If there is more than one quad matches, the program must display them all alphabetically ordered and separated by a ||.
+C)
+ABBBA
+B   B
+CBBBC
 
-The solution should be submitted as follow:
+D)
+ABBBC
+B   B
+ABBBC
 
-$ tree .
-quadchecker
-├── go.mod
-└── main.go
-Usage
-If it's quadA
-$ ls -l
--rw-r--r-- 1 student student  nov 23 14:30 main.go
--rwxr-xr-x 1 student student  nov 23 19:18 quadchecker
--rwxr-xr-x 1 student student  nov 23 19:50 quadA
--rwxr-xr-x 1 student student  nov 23 19:50 quadB
--rwxr-xr-x 1 student student  nov 23 19:50 quadC
--rwxr-xr-x 1 student student  nov 23 19:50 quadD
--rwxr-xr-x 1 student student  nov 23 19:50 quadE
-$ ./quadA 3 3 | go run .
-[quadA] [3] [3]
-$
-If it's quadC 1 1 :
-$ ./quadC 1 1
-A
-$ ./quadD 1 1
-A
-$ ./quadE 1 1
-A
-$ ./quadC 1 1 | go run .
-[quadC] [1] [1] || [quadD] [1] [1] || [quadE] [1] [1]
-$
-If it's quadC 1 2 :
-$ ./quadE 1 2
-A
-C
-$ ./quadC 1 2
-A
-C
-$ ./quadE 1 2 | go run .
-[quadC] [1] [2] || [quadE] [1] [2]
-$
-If it's not a quad function:
-$ echo 0 0 | go run .
+E)
+ABBBC
+B   B
+CBBBA
+
+Each quad function should take 2 int arguments: one for the row and one for the column of the quad generated.
+The command to run the quad generatoirs are ./[program name] [row] [col]
+Example: ./quadA 5 3, which will print out the examples above.
+
+The quadchecker(main.go) is intended to be run with the quad generator and a | command. This will feed the output of the quad generator into the quadchecker and tells the user which are the possible quads. Echo command can be used to feed incorrect output int the quadchecker.
+
+Correct Example:
+$ ./quadA 123 456 | ./quadchecker 
+[quadA] [123] [456]
+
+Fail Example:
+$ echo -n "ABBo\n|  B\nB  |\nC--C\n"
+ABBo
+|  B
+B  |
+C--C
+$ echo -n "ABBo\n|  B\nB  |\nC--C\n" | ./quadchecker
 Not a quad function
-$ echo -n "o--o"$'\n'"|"$'\n'"o"
-o--o
-|
-o$ echo -n "o--o"$'\n'"|"$'\n'"o" | go run .
-Not a quad function
+
+Made by:
+Allen Lee 'ylee' Yuan Neng
+Tobias 'tjerner' Jernér
+Sean 'skipina' Kipinä
+
+
